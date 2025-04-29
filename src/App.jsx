@@ -1,23 +1,19 @@
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography';
-import AcUnitIcon from '@mui/icons-material/AcUnit';
-import { useColorScheme } from '@mui/material/styles';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import FormControl from '@mui/material/FormControl';
+import { useColorScheme } from '@mui/material/styles'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
+import FormControl from '@mui/material/FormControl'
 
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
-import Box from '@mui/material/Box';
-
-
+import LightModeIcon from '@mui/icons-material/LightMode'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
 
 function ModeSelect() {
-  const {mode, setMode} = useColorScheme()
+  const { mode, setMode } = useColorScheme()
   const handleChange = (event) => {
-    const selectedMode = event.target.value;
+    const selectedMode = event.target.value
     setMode(selectedMode)
   }
   return (
@@ -30,21 +26,20 @@ function ModeSelect() {
         label="Mode"
         onChange={handleChange}
       >
-        
         <MenuItem value={'light'}>
-          <Box sx={{display: 'flex', alignItems: 'center', gap: 1}}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <LightModeIcon fontSize='small'/> Light
           </Box>
         </MenuItem>
 
         <MenuItem value={'dark'}>
-          <Box sx={{display: 'flex', alignItems: 'center', gap: 1}}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <DarkModeOutlinedIcon fontSize='small'/> Dark
           </Box>
         </MenuItem>
 
         <MenuItem value={'system'}>
-          <Box sx={{display: 'flex', alignItems: 'center', gap: 1}}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <SettingsBrightnessIcon fontSize='small'/> System
           </Box>
         </MenuItem>
@@ -54,31 +49,19 @@ function ModeSelect() {
   )
 }
 
-function ModeToggle() {
-  const { mode, setMode } = useColorScheme();
-  return (
-    <Button
-      onClick={() => {
-        setMode(mode === 'light' ? 'dark' : 'light');
-      }}
-    >
-      {mode === 'light' ? 'Turn dark' : 'Turn light'}
-    </Button>
-  );
-}
-
 function App() {
   return (
-    <>
-      <div>Lê Quốc Anh</div> 
-      <ModeToggle/>
-      <ModeSelect/>
-      <Typography variant='body2' color={"text.secondary"}>Hello Worlds</Typography>
-      <AcUnitIcon/>
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-    </>
+    <Container disableGutters maxWidth={false} sx={{ height: '100dvh' }}>
+      <Box sx={{ backgroundColor: 'primary.light', display: 'flex', alignItems: 'center', height: (theme) => theme.trello.appBarHeight }}>
+        <ModeSelect/>
+      </Box>
+      <Box sx={{ backgroundColor: 'primary.dark', display: 'flex', alignItems: 'center', height: (theme) => theme.trello.boardBar }}>
+        Board Bar
+      </Box>
+      <Box sx={{ backgroundColor: 'primary.main', height: (theme) => `calc(100dvh - ${theme.trello.boardBar} - ${theme.trello.appBarHeight})` }}>
+        Content Box
+      </Box>
+    </Container>
   )
 }
 
