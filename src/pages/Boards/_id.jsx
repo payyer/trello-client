@@ -1,6 +1,6 @@
 import BoardBar from './BoardBar'
+import AppBar from '~/components/AppBar'
 import BoardContent from './BoardContent'
-import AppBar from '../../components/AppBar'
 import Container from '@mui/material/Container'
 
 export default function Board() {
